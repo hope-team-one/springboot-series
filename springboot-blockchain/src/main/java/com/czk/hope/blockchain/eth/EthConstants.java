@@ -11,38 +11,38 @@ import java.math.BigInteger;
  * @Create: 2020/1/9 9:53
  * ETH配置类
  */
-public class EthConstants {
+public interface EthConstants {
 
     /*----- 自己维护一个nonce -----*/
-    public static BigInteger nonce = new BigInteger("0");
+    BigInteger nonce = new BigInteger("0");
 
-    public static String key = "";
+    String key = "";
 
     /*---- 建立web3j ----*/
-    public static Web3j web3j = Web3j.build(new HttpService("https://mainnet.infura.io/v3/" + key));
+    Web3j web3j = Web3j.build(new HttpService("https://mainnet.infura.io/v3/" + key));
 
     /*---- 转账的手续费 ----*/
-    public static BigInteger gasPrice = Convert.toWei("10", Convert.Unit.GWEI).toBigInteger();
+    BigInteger gasPrice = Convert.toWei("10", Convert.Unit.GWEI).toBigInteger();
     public static BigInteger gasLimit = Convert.toWei("45000", Convert.Unit.WEI).toBigInteger();
 
     /*---- 合约地址 ----*/
-    public static String contractAccount = "";
+    String contractAccount = "";
 
     /*---- 汇手续费的地址 ----*/
-    public static String serviceCharge = "";
+    String serviceCharge = "";
 
     /*---- 汇手续费的私钥 ----*/
-    public static String serviceChargePrivateKey = "";
+    String serviceChargePrivateKey = "";
 
     /*---- 代币的位数 ----*/
-    public static Integer decimals = 6;
+    Integer decimals = 6;
 
     /*---- 代币归集的地址 ----*/
-    public static String ercToAddress = "";
+    String ercToAddress = "";
 
     /*---- 获取私钥的URL ----*/
-    public static String getPrivateKeyUrl = "";
+    String getPrivateKeyUrl = "";
 
     /*---- 存放json私钥文件地址 ----*/
-    public static String privateKeyJsonFilePath = "D:\\wallet\\";
+    String privateKeyJsonFilePath = "D:\\wallet\\";
 }

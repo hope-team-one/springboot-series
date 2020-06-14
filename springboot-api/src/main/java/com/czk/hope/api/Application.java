@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableAsync;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
@@ -17,6 +18,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 //@EnableJpaRepositories("com.czk.hope.entity.repository")   // 用于扫描Dao @Repository
 //@EntityScan("com.czk.hope.entity.model") // 用于扫描JPA实体类 @Entity
 @EnableSwagger2
+@EnableAsync
 @MapperScan("com.czk.hope.entity.repository")
 public class Application {
 

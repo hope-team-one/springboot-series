@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页111</title>
+</head>
+<script src="js/jquery.js"></script>
+<body>
+<!--当登录成功，SpringSecurity默认的跳转页面，默认的跳转页面，默认的跳转页面，-->
+<h1>这是主页耶！！！想不到吧111</h1>
+<div>
+    <span>QQ信息</span><br>
+    <span>绑定状态：</span><span id="qqBanding"></span><br>
+    <button id="banding" style="display: none;" onclick="unband()">解除绑定</button>
+    <button id="unbanding" style="display: none;" onclick="band('qq')">绑定</button>
+    <form action="/connect/qq" method="post">
+        <button type="submit">qq绑定</button>
+    </form>
+    <span>微信信息</span><br>
+    <span>绑定状态：</span><span id="weixinBanding"></span><br>
+    <button id="wxbanding" style="display: none;" onclick="unband()">解除绑定</button>
+    <button id="wxunbanding" style="display: none;" onclick="band('weixin')">绑定</button>
+    <form action="/connect/weixin" method="post">
+        <button type="submit">微信绑定</button>
+    </form>
+    <a href="javascript:void(0)" onclick="test()">不是跨域请求</a>
+    <a href="javascript:void(0)" onclick="logOut()">退出登陆</a>
+</div>
+</body>
+<script>
+    $(function () {
+        $.ajax({
+            url: "/alibaba/user",
+            type: "get",
+            // contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            success: function (data) {
+                if (data != null && data != "" && data != undefined) {
+                    var json = eval(data);
+                    if(json.qq==true){
+                        $("#qqBanding").text("已绑定");
+                        $("#banding").css("display","");
+                    }else{
+                        $("#qqBanding").text("未绑定");
+                        $("#unbanding").css("display","");
+                    }
+                    if(json.weixin==true){
+                        $("#weixinBanding").text("已绑定");
+                        $("#wxbanding").css("display","");
+                    }else{
+                        $("#weixinBanding").text("未绑定");
+                        $("#wxunbanding").css("display","");
+                    }
+                } else {
+                    alert("没数据");
+                }
+            }
+        });
+    })
+
+    function unband() {
+
+    }
+
+    function band(providerId) {
+        $.ajax({
+            url: "/connect/"+providerId,
+            type: "post",
+            // contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            success: function (data) {
+                if (data != null && data != "" && data != undefined) {
+
+                } else {
+                    alert("没数据");
+                }
+            }
+        });
+    }
+
+    function test() {
+        $.ajax({
+            url: "/test",
+            type: "post",
+            // contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            success: function (data) {
+                if (data != null && data != "" && data != undefined) {
+                    alert(data.code+","+data.msg);
+                } else {
+                    alert("没数据");
+                }
+            }
+        });
+    }
+
+    function logOut(){
+        $.ajax({
+            url: "/signOut",
+            type: "post",
+            // contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            success: function (data) {
+                if (data != null && data != "" && data != undefined) {
+                    if(data.code==200){//退出成功 访问登陆界面 前后端分离得时候 前端获取到是否退出成功再决定继续什么操作
+                        alert("退出成功");
+                        window.location.href = "imooc-signIn.html";
+                    }
+                } else {
+                    alert("没数据");
+                }
+            }
+        });
+    }
+</script>
+</html>

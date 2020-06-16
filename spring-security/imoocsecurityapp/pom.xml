@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>imooc-security-app</artifactId>
+    <parent>
+        <groupId>com.imooc.security</groupId>
+        <artifactId>imooc.secutiry</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../imoocsecutiry</relativePath>
+    </parent>
+
+  <dependencies>
+      <!--引入imooccore项目，因为依赖相同，多模块开发，模块间的依赖包可以共享-->
+      <!--因为所有的引用在core里面已经引入好了 我只需要把core引入进来就行了-->
+      <!--也相当于一个引入关系，相当于你写代码的时候引入包，然后你就可以在代码中使用这个包里面的内容 这里也是你引入了core，那么你就可以core里面的内容-->
+      <dependency>
+          <groupId>com.imooc.security</groupId>
+          <artifactId>imooc-security-core</artifactId>
+          <version>${imooc.security.version}</version>
+      </dependency>
+  </dependencies>
+
+</project>

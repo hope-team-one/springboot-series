@@ -13,7 +13,6 @@
         <module>springboot-blockchain</module>
         <module>springboot-designmode</module>
         <module>springboot-mq</module>
-        <module>springboot-security</module>
     </modules>
 
     <parent>
